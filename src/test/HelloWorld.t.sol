@@ -8,7 +8,7 @@ import "./utils/Vm.sol";
 
 import {HelloWorld} from "../contracts/HelloWorld.sol";
 
-contract HelloWorld is DSTest {
+contract HelloWorldTest is DSTest {
     Vm internal constant vm = Vm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     HelloWorld internal helloWorld;
 
@@ -17,13 +17,13 @@ contract HelloWorld is DSTest {
     }
 
     function testHelloWorld() public {
-        string helloWorld = helloWorldHelper();
-        emit log_named_string("<|HelloWorld String|> ==", helloWorld);        
+        string memory hw = helloWorldHelper();
+        emit log_named_string("<|HelloWorld String|> ==", hw);        
     }
 
     /* ========== HELPERS ========== */
 
-    function helloWorldHelper() public view returns ( string helloString ) {        
+    function helloWorldHelper() public returns ( string memory ) {        
         helloWorld = new HelloWorld();
         return helloWorld.helloWorld();
     }    
